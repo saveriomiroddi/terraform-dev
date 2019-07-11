@@ -20,9 +20,18 @@ each occurrence with a given replacement string.
 replace(string, substring, replacement)
 ```
 
+If `substring` is wrapped in forward slashes, it is treated as a regular
+expression; the syntax conforms to the [re2 regular expression
+syntax](https://github.com/google/re2/wiki/Syntax) syntax. If using a regular
+expression, `replace` can reference subcaptures in the regular expression by
+using `$n` where `n` is the index or name of the subcapture.
+
 ## Examples
 
 ```
 > replace("1 + 2 + 3", "+", "-")
 1 - 2 - 3
+
+> replace("hello world", "/w.*d/", "everybody")
+hello everybody
 ```
